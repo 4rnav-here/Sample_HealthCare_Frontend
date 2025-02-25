@@ -28,6 +28,28 @@ body {
   margin: 0 auto;
   padding: 0 15px;
 }
+h2 {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 
 /* Header */
 header {
@@ -55,13 +77,6 @@ header {
     transform: scale(1.1);
 }
 
-
-.logo {
-  display: flex;
-  align-items: center;
-  animation: fadeSlide 1s ease-in-out;
-}
-
 @keyframes fadeSlide {
     from {
         opacity: 0;
@@ -72,13 +87,20 @@ header {
         transform: translateY(0);
     }
 }
+.logo {
+  display: flex;
+  align-items: center;
+  animation: fadeSlide 1s ease-in-out;
+}
+
+
 
 .logo img {
   height: 40px;
   margin-right: 10px;
 }
 
-.logo h1 {
+.logo h2 {
   font-size: 1.8rem;
   color: var(--primary);
   font-weight: 700;
@@ -147,12 +169,6 @@ header {
   padding: 150px 0 100px;
   text-align: center;
 }
-
-.hero h2 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  animation: scaleFade 1s ease-in-out;
-}
 @keyframes scaleFade {
     from {
         opacity: 0;
@@ -163,6 +179,17 @@ header {
         transform: scale(1);
     }
 }
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  animation: scaleFade 1s ease-in-out;
+}
+
+.hero-section {
+    background: linear-gradient(-45deg, #007b7f, #008c8c, #005f63, #009b9b);
+    background-size: 300% 300%;
+    animation: gradientAnimation 8s ease infinite;
+}
 
 .hero p {
   font-size: 1.2rem;
@@ -170,26 +197,40 @@ header {
   margin: 0 auto 30px;
 }
 
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+.cta-buttons {
+    display: flex;
+    gap: 15px; /* Adds space between buttons */
 }
 
-.secondary-button {
-  background-color: transparent;
-  color: white;
-  padding: 10px 20px;
-  border: 2px solid white;
-  border-radius: 5px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s;
+.cta-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: 0.3s ease-in-out;
 }
 
-.secondary-button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+.demo-btn {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+.learn-btn {
+    background-color: #ddd;
+    color: black;
+    border: none;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
 
 /* About Section */
 .about {
@@ -262,7 +303,112 @@ header {
   margin-bottom: 5px;
 }
 
+/* Problems with today's approach */
+.section-heading {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.problems-section {
+    padding: 80px 0;
+    background: #f9f9f9;
+}
+
+.problem-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    gap: 40px;
+}
+
+.problem-image img {
+    width: 250px;
+    height: 200px;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.problem-image img:hover {
+    transform: scale(1.05);
+}
+
+.problem-text {
+    max-width: 500px;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+
 /* Our Approach Section */
+
+.help-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f0faf6, #d9f2e6);
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #006b6a;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.help-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.help-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.help-card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    color: #007b72;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 1rem;
+    color: #555;
+}
+
 .app-showcase {
     padding: 100px 0;
     background-color: #f8f9fa;
@@ -367,6 +513,24 @@ header {
 .stat-card p {
   color: var(--gray);
 }
+
+#dynamic-message {
+    font-size: 1.5rem; /* Increase font size */
+    font-weight: bold; /* Make text bold */
+    text-align: center; /* Center align */
+    margin-top: 20px; /* Add space from the images */
+    padding: 15px; /* Add some padding */
+    color: #ffffff; /* White text */
+    background: linear-gradient(90deg, #007b7f, #00a1a7); /* Gradient background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Add shadow for better visibility */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 1; /* Ensure message is visible */
+    display: inline-block; /* Fit the content width */
+    width: auto;
+    max-width: 80%;
+}
+
 
 /* Clients Section */
 .clients {
